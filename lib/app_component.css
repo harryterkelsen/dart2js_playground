@@ -1,0 +1,36 @@
+:host {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.editor {
+  height: 100%;
+  width: 100%;
+}
+
+.editor .left {
+  float: left;
+  width: 50%;
+}
+
+.editor .right {
+  margin-left: 50%;
+}
+
+.editor div {
+  border: 1px solid;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.editor textarea {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  resize: none;
+  border: none;
+  margin: 0;
+  display: block;
+}

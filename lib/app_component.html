@@ -1,0 +1,12 @@
+<h1>dart2js playground</h1>
+
+<button (click)="compile()">compile</button>
+
+<div class="editor">
+  <div class="left">
+    <textarea [(ngModel)]="code" spellcheck="false"></textarea>
+  </div>
+  <div class="right">
+    <pre>{{output}}</pre>
+  </div>
+</div>
