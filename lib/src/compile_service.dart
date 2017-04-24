@@ -5,7 +5,8 @@ import 'package:angular2/angular2.dart';
 import 'package:http/browser_client.dart';
 
 const url = 'https://dart-services.appspot.com/api/dartservices/v1/compile';
-const userCodeMarker = 'resource:/main.dart';
+const userCodeStartMarker = 'resource:/main.dart';
+const userCodeEndMarker = '}, 1]];';
 
 @Injectable()
 class CompileService {
@@ -20,10 +21,16 @@ class CompileService {
   String _getUserCode(String code) {
     return LineSplitter
         .split(code)
-        .skipWhile((line) => !line.contains(userCodeMarker))
+        .skipWhile((line) => !line.contains(userCodeStartMarker))
         // skip 2 boilerplate lines
         .skip(2)
-        .takeWhile((line) => line.trim() != '}, 1]];')
+        .takeWhile((line) => line.trim() != userCodeEndMarker)
+        .map((line) => _deindent(line, 4))
         .join('\n');
+  }
+
+  String _deindent(String line, int spaces) {
+    assert(line.startsWith(' ' * spaces));
+    return line.substring(spaces);
   }
 }

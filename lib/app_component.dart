@@ -4,31 +4,42 @@
 import 'dart:async';
 
 import 'package:angular2/core.dart';
-import 'package:dart2js_playground/compile_service/compile_service.dart';
-import 'package:dart2js_playground/src/initial_values.dart';
-
-
+import 'package:dart2js_playground/src/compile_service.dart';
+import 'package:dart2js_playground/src/example_service.dart';
 
 @Component(
   selector: 'my-app',
   styleUrls: const ['app_component.css'],
   templateUrl: 'app_component.html',
-  providers: const [CompileService],
+  providers: const [CompileService, ExampleService],
 )
-class AppComponent {
+class AppComponent implements OnInit {
   final CompileService compileService;
+  Map<String, String> examples;
 
-  String code = initialCode;
-
-  String output = initialOutput;
+  String code;
+  String output;
 
   bool compiling = false;
 
-  AppComponent(this.compileService);
+  AppComponent(this.compileService, ExampleService exampleService) {
+    examples = exampleService.examples;
+    code = examples['Greeter'];
+  }
+
+  @override
+  Future<Null> ngOnInit() async {
+    await compile();
+  }
 
   Future<Null> compile() async {
     compiling = true;
     output = await compileService.compile(code);
     compiling = false;
+  }
+
+  Future<Null> selectExample(String example) async {
+    code = examples[example];
+    await compile();
   }
 }
