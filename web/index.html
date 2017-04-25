@@ -7,8 +7,9 @@
         (function () {
             // App being served out of web folder (like WebStorm does)?
             var match = document.location.pathname.match(/^\/[-\w]+\/web\//);
-            var href = match ? match[0] : '/';
-            document.write('<base href="' + href + '" />');
+            if (match) {
+              document.write('<base href="' + match[0] + '" />');
+            }
         }());
     </script>
 
