@@ -1,0 +1,35 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "ExampleService",
+        "4": [
+          {
+            "1": "Injectable",
+            "4": false
+          }
+        ]
+      }
+    ],
+    "6": "example_service.dart"
+  },
+  "type": {
+    "ExampleService": {
+      "class": "Type",
+      "name": "ExampleService",
+      "moduleUrl": "asset:dart2js_playground/lib/src/example_service.dart",
+      "prefix": null,
+      "isHost": false,
+      "value": null,
+      "diDeps": []
+    }
+  },
+  "alias": {}
+}
