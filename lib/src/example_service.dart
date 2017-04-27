@@ -14,6 +14,32 @@ void main() {
   var g = new Greeter("world");
   g.greet();
 }''',
+    'Animals': r'''void main() {
+  var animal = new Animal();
+  animal.consume(new Water(5));
+}
+
+class Animal {
+  void consume(something) {
+    if (something is Food) {
+      print('Ate ${something.weight} pounds');
+    } else if (something is Water) {
+      print('Drank ${something.amount} liters');
+    } else {
+      throw 'Unexpected: ${something.runtimeType}';
+    }
+  }
+}
+
+class Food {
+  final int weight;
+  const Food(this.weight);
+}
+
+class Water {
+  final int amount;
+  const Water(this.amount);
+}''',
     'Math': r'''import 'dart:math';
 
 num square(num x) => x * x;
