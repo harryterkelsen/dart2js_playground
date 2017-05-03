@@ -22,6 +22,9 @@ class AppComponent implements OnInit {
 
   bool compiling = false;
 
+  @ViewChild('alert')
+  ElementRef alert;
+
   AppComponent(this.compileService, ExampleService exampleService) {
     examples = exampleService.examples;
     code = examples['Greeter'];
@@ -34,7 +37,14 @@ class AppComponent implements OnInit {
 
   Future<Null> compile() async {
     compiling = true;
-    output = await compileService.compile(code);
+    var result = await compileService.compile(code);
+    if (result == null) {
+      output = '';
+      alert.nativeElement.classes.remove('hidden');
+    } else {
+      output = result;
+      alert.nativeElement.classes.add('hidden');
+    }
     compiling = false;
   }
 
