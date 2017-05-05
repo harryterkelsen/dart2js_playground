@@ -1,26 +1,31 @@
-<div class="col-xs-12 col-md-6 form-group form-group-lg">
-  <div class="row">
-    <select class="form-control"
-            (change)="selectExample($event.target.value)">
-      <option *ngFor="let example of examples.keys">{{example}}</option>
-    </select>
-  </div>
-  <div class="row">
-    <textarea class="form-control" rows="20"
-              placeholder="main() => print('hello world');"
-              [disabled]="compiling"
-              [(ngModel)]="code" spellcheck="false"></textarea>
-  </div>
+<div class="alert alert-danger hidden" #alert>
+  <strong>Error!</strong> dart2js failed while compiling. Check your code and try again.
 </div>
-<div class="col-xs-12 col-md-5 col-md-offset-1">
-  <div class="row">
-    <button class="btn btn-primary"
-            (click)="compile()"
-            [disabled]="compiling">
-      Recompile
-    </button>
+<div>
+  <div class="col-xs-12 col-md-6 form-group form-group-lg">
+    <div class="row">
+      <select class="form-control"
+              (change)="selectExample($event.target.value)">
+        <option *ngFor="let example of examples.keys">{{example}}</option>
+      </select>
+    </div>
+    <div class="row">
+      <textarea class="form-control" rows="20"
+                placeholder="main() => print('hello world');"
+                [disabled]="compiling"
+                [(ngModel)]="code" spellcheck="false"></textarea>
+    </div>
   </div>
-  <div class="row output-row">
-    <pre>{{output}}</pre>
+  <div class="col-xs-12 col-md-5 col-md-offset-1">
+    <div class="row">
+      <button class="btn btn-primary"
+              (click)="compile()"
+              [disabled]="compiling">
+        Recompile
+      </button>
+    </div>
+    <div class="row output-row">
+      <pre>{{output}}</pre>
+    </div>
   </div>
 </div>

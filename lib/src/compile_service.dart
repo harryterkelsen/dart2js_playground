@@ -17,6 +17,7 @@ class CompileService {
   Future<String> compile(String code) async {
     var response = await _client.post(url, body: JSON.encode({'source': code}));
     var result = JSON.decode(response.body);
+    if (result['result'] == null) return null;
     return preambleComment + _getUserCode(result['result']);
   }
 
