@@ -7,6 +7,8 @@ import 'package:http/browser_client.dart';
 const url = 'https://dart-services.appspot.com/api/dartservices/v1/compile';
 const userCodeStartMarker = 'resource:/main.dart';
 const userCodeEndMarker = '}, 1]];';
+const preambleComment =
+    '// Code shared by all dart2js compilations omitted.\n\n';
 
 @Injectable()
 class CompileService {
@@ -16,7 +18,7 @@ class CompileService {
     var response = await _client.post(url, body: JSON.encode({'source': code}));
     var result = JSON.decode(response.body);
     if (result['result'] == null) return null;
-    return _getUserCode(result['result']);
+    return preambleComment + _getUserCode(result['result']);
   }
 
   String _getUserCode(String code) {
