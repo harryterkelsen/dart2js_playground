@@ -54,6 +54,13 @@
       "prefix": null,
       "value": null
     },
+    "preambleComment": {
+      "class": "Identifier",
+      "name": "preambleComment",
+      "moduleUrl": "asset:dart2js_playground/lib/src/compile_service.dart",
+      "prefix": null,
+      "value": null
+    },
     "CompileService": {
       "class": "Type",
       "name": "CompileService",
