@@ -5,7 +5,7 @@ import 'package:angular2/angular2.dart';
 import 'package:http/browser_client.dart';
 
 const url = 'https://dart-services.appspot.com/api/dartservices/v1/compile';
-const userCodeStartMarker = 'resource:/main.dart';
+const userCodeStartMarker = 'main.dart';
 const userCodeEndMarker = '}, 1]];';
 const preambleComment =
     '// Code shared by all dart2js compilations omitted.\n\n';
